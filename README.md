@@ -1,105 +1,122 @@
 # React + TypeScript + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A modern React project template with TypeScript, Vite, and comprehensive development tools.
 
-Currently, two official plugins are available:
+## 🚀 Tech Stack
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- **React 19** - UI library
+- **TypeScript** - Type safety
+- **Vite 7** - Build tool with HMR
+- **SWC** - Fast compiler for React
+- **ESLint** - Code linting
+- **Prettier** - Code formatting
+- **Husky** - Git hooks
+- **lint-staged** - Run linters on staged files
 
-## React Compiler
+## 📦 Installation
 
-The React Compiler is currently not compatible with SWC. See [this issue](https://github.com/vitejs/vite-plugin-react/issues/428) for tracking the progress.
+### 1. Create project directory
 
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
-
-
-```
+```bash
 mkdir project_name
+cd project_name
 ```
 
-- Install React + Vite
+### 2. Initialize Vite project
 
-```
+```bash
 yarn create vite .
 ```
 
-```
-Select a framework:
-> React
-Select a variant:
-> TypeScript + SWC
-Use rolldown-vite (Experimental)?:
-> No
-Install with yarn and start now?
-> Yes
-```
+Select options:
+- **Framework**: React
+- **Variant**: TypeScript + SWC
+- **Use rolldown-vite**: No
+- **Install with yarn and start now**: Yes
 
-```
+### 3. Install additional dependencies
+
+```bash
 yarn add husky lint-staged prettier eslint-config-prettier eslint-plugin-prettier -D
 ```
 
-Sau khi cài husky chạy lênh
+### 4. Initialize Husky
 
-```
+```bash
 npx husky init
 ```
+
+## 🛠️ Available Scripts
+
+| Command | Description |
+|---------|-------------|
+| `yarn start` | Start development server |
+| `yarn build` | Build for production |
+| `yarn preview` | Preview production build |
+| `yarn lint` | Run ESLint |
+| `yarn lint:fix` | Fix ESLint errors automatically |
+| `yarn prettier` | Check code formatting |
+| `yarn prettier:fix` | Format code automatically |
+
+## 📁 Project Structure
+
+```
+src/
+├── assets/          # Static assets (images, fonts, icons)
+├── components/      # Reusable components
+├── constants/       # App constants
+├── contexts/       # React contexts
+├── hooks/          # Custom React hooks
+├── layout/         # Layout components
+├── models/         # TypeScript types/interfaces
+├── App.tsx         # Main App component
+├── main.tsx        # Entry point
+└── index.css       # Global styles
+```
+
+## 🔧 Code Quality
+
+### ESLint
+
+This project uses ESLint with the following configurations:
+
+- **TypeScript ESLint** - TypeScript-specific rules
+- **React Hooks** - React Hooks rules
+- **React Refresh** - Fast Refresh compatibility
+- **Prettier** - Code formatting integration
+
+### Prettier
+
+Code formatting is enforced with Prettier. Configuration can be found in `.prettierrc`.
+
+### Git Hooks
+
+Husky is configured to run lint-staged on pre-commit:
+
+- **ESLint** - Lint and fix staged `.js`, `.ts`, `.tsx` files
+- **Prettier** - Format staged `.ts`, `.tsx`, `.html`, `.css`, `.json` files
+
+## 🎯 Development Guidelines
+
+### Component Structure
+
+- Each component should be in its own folder with an `index.ts` file for exports
+- Use TypeScript for all components
+- Follow React Fast Refresh best practices (only export components from `.tsx` files)
+
+### Code Style
+
+- Use single quotes for strings
+- No semicolons
+- 2 spaces indentation
+- Max line width: 120 characters
+
+### TypeScript
+
+- Enable strict mode
+- Avoid using `any` type
+- Define types/interfaces in `models/` directory
+
+## 📝 License
+
+This project is private.

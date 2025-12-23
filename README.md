@@ -8,6 +8,8 @@ A modern React project template with TypeScript, Vite, and comprehensive develop
 - **TypeScript** - Type safety
 - **Vite 7** - Build tool with HMR
 - **SWC** - Fast compiler for React
+- **Tailwind CSS v4** - Utility-first CSS framework
+- **shadcn/ui** - Re-usable components built with Radix UI and Tailwind CSS
 - **ESLint** - Code linting
 - **Prettier** - Code formatting
 - **Husky** - Git hooks
@@ -29,6 +31,7 @@ yarn create vite .
 ```
 
 Select options:
+
 - **Framework**: React
 - **Variant**: TypeScript + SWC
 - **Use rolldown-vite**: No
@@ -46,17 +49,47 @@ yarn add husky lint-staged prettier eslint-config-prettier eslint-plugin-prettie
 npx husky init
 ```
 
+### 5. Install shadcn/ui
+
+> **📖 Detail setup guide**: [shadcn/ui Installation for Vite](https://ui.shadcn.com/docs/installation/vite)
+
+Install Tailwind CSS and required dependencies:
+
+```bash
+yarn add tailwindcss @tailwindcss/vite
+yarn add -D @types/node
+```
+
+Initialize shadcn/ui:
+
+```bash
+yarn add shadcn@latest
+yarn shadcn init
+```
+
+Select options:
+
+- **Which color would you like to use as base color?: › Neutral**
+
+Add components:
+
+```bash
+yarn shadcn add button
+yarn shadcn add label
+# Add more components as needed
+```
+
 ## 🛠️ Available Scripts
 
-| Command | Description |
-|---------|-------------|
-| `yarn start` | Start development server |
-| `yarn build` | Build for production |
-| `yarn preview` | Preview production build |
-| `yarn lint` | Run ESLint |
-| `yarn lint:fix` | Fix ESLint errors automatically |
-| `yarn prettier` | Check code formatting |
-| `yarn prettier:fix` | Format code automatically |
+| Command             | Description                     |
+| ------------------- | ------------------------------- |
+| `yarn start`        | Start development server        |
+| `yarn build`        | Build for production            |
+| `yarn preview`      | Preview production build        |
+| `yarn lint`         | Run ESLint                      |
+| `yarn lint:fix`     | Fix ESLint errors automatically |
+| `yarn prettier`     | Check code formatting           |
+| `yarn prettier:fix` | Format code automatically       |
 
 ## 📁 Project Structure
 
@@ -64,14 +97,16 @@ npx husky init
 src/
 ├── assets/          # Static assets (images, fonts, icons)
 ├── components/      # Reusable components
+│   └── ui/         # shadcn/ui components
 ├── constants/       # App constants
 ├── contexts/       # React contexts
 ├── hooks/          # Custom React hooks
 ├── layout/         # Layout components
+├── lib/            # Utility functions (e.g., cn helper)
 ├── models/         # TypeScript types/interfaces
 ├── App.tsx         # Main App component
 ├── main.tsx        # Entry point
-└── index.css       # Global styles
+└── index.css       # Global styles (Tailwind directives)
 ```
 
 ## 🔧 Code Quality
